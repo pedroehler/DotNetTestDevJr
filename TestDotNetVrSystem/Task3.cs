@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace TestDotNetVrSystem
 {
@@ -10,6 +11,17 @@ namespace TestDotNetVrSystem
          */
         public static int GetSum(List<int> list)
         {
+            int sum = 0;
+
+            foreach (int i in list)
+            {
+                if (i > 0)
+                {
+                    sum = sum + i;
+                }
+            }
+
+            return sum;
         }
     }
 }

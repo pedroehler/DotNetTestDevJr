@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TestDotNetVrSystem
 {
@@ -17,6 +18,27 @@ namespace TestDotNetVrSystem
          */
         public static List<decimal> GetRatios(List<int> numbers)
         {
+            decimal positivosCont = 0;
+            decimal negativosCont = 0;
+            decimal zerosCont = 0;
+
+            foreach (int i in numbers)
+            {   
+                if (i > 0)
+                    positivosCont++;
+                else if (i < 0)
+                    negativosCont++;
+                else if (i == 0)
+                    zerosCont++;
+            }
+
+            List<decimal> proporcao = new List<decimal>();
+
+            proporcao.Add(Math.Round(positivosCont / numbers.Count, 6));
+            proporcao.Add(Math.Round(negativosCont / numbers.Count, 6));
+            proporcao.Add(Math.Round(zerosCont / numbers.Count, 6));
+
+            return proporcao;
         }
     }
 }

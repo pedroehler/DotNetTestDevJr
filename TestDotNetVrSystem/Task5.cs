@@ -8,6 +8,22 @@
          */
         public static string GetEvenOrOdd(int number)
         {
+            
+            if (number == 0)
+            {
+                return "zero";
+            }
+            else
+            {
+                if (number % 2 == 0)
+                {
+                    return "par";
+                }
+                else
+                {
+                    return "impar";
+                }
+            }
         }
     }
 }

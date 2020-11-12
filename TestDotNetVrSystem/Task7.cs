@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TestDotNetVrSystem.HelpClasses;
 
 namespace TestDotNetVrSystem
 {
@@ -10,6 +11,18 @@ namespace TestDotNetVrSystem
          */
         public static List<string> GetProductsOutOfStock()
         {
+            var repository = new Repository();
+            List<string> produtosZerados = new List<string>();
+
+            foreach (var item in repository.Products)
+            {
+                if (item.Stock.Quantity == 0)
+                {
+                    produtosZerados.Add(item.Name);
+                }
+            }
+
+            return produtosZerados;
         }
 
         /*
@@ -18,6 +31,15 @@ namespace TestDotNetVrSystem
         */
         public static int GetSumStock()
         {
+            var repository = new Repository();
+            int sumEstoque = 0;
+
+            foreach (var item in repository.Products)
+            {
+                sumEstoque = sumEstoque + item.Stock.Quantity;
+            }
+
+            return sumEstoque;
         }
 
         /*
@@ -28,6 +50,13 @@ namespace TestDotNetVrSystem
          */
         public static bool IsSalePossible(int productId, int orderQuantity)
         {
+            var repository = new Repository();
+            var prod = repository.Products[productId];
+
+            if (prod.Stock.Quantity >= orderQuantity)
+                return true;
+            else
+                return false;
         }
     }
 }
